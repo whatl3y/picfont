@@ -1,6 +1,6 @@
 # picfont
 
-Create stylish, vectorized icons you can use in the browser, similar to
+Create vectorized icons from your pictures you can use in the browser, similar to
 [font-awesome](http://fontawesome.io/) or [devicon](http://konpa.github.io/devicon/)
 icons that you can style via CSS.
 
@@ -28,7 +28,11 @@ $ npm run binaryprep
 
 ## Usage
 
-TBD
+### FontGenerator
+
+### Potrace
+
+### PicturesToFont
 
 ## Development
 
