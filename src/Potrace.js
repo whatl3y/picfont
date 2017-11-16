@@ -16,7 +16,7 @@ export default {
 
   // see: http://potrace.sourceforge.net/README
   async potrace(sourceBitmap, outputSvg=null, outputType='svg') {
-    outputSvg = outputSvg || `${sourceBitmap}.svg`
+    outputSvg = outputSvg || `${sourceBitmap.replace('.', '_')}.svg`
     const returnedBuffers = await exec(`potrace -b ${outputType} -o ${outputSvg} ${sourceBitmap}`)
     if (returnedBuffers.stderr)
       throw returnedBuffers.stderr
@@ -70,6 +70,6 @@ export default {
 
   getFileName(fileName, extraText=Date.now()) {
     const lastPeriod = fileName.lastIndexOf(".")
-    return `${fileName.substring(0,lastPeriod)}_${extraText}${fileName.substring(lastPeriod)}`
+    return `${fileName.substring(0, lastPeriod).replace('.', '_')}_${extraText}${fileName.substring(lastPeriod)}`
   }
 }

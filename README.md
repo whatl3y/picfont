@@ -14,7 +14,7 @@ icons that you can style via CSS.
 ## Requirements
 
 [Potrace](http://potrace.sourceforge.net) should be installed in the postinstall step,
-although if you encounter errors you'll need to take some additional steps to install it.
+but if you encounter errors you'll need to take some additional steps to install it.
 Potrace needs to be installed and the `potrace` and `mkbitmap` binaries need to be in your $PATH.
 
 If you don't have them installed yet and/or it was not added successfully in
@@ -22,7 +22,7 @@ the postinstall step, you can install them and add them to your
 $PATH automatically by doing the following:
 
 ```
-$ cd ./node_modules/picfont/potrace
+$ cd ./node_modules/picfont
 $ npm run binaryprep
 ```
 
@@ -32,7 +32,7 @@ TBD
 
 ## Development
 
-Build the distribution files
+Build the dist files
 
 ```
 $ npm run build

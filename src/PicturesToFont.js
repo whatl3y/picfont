@@ -6,7 +6,7 @@ import Potrace from './Potrace'
 
 const writeFile = util.promisify(fs.writeFile)
 
-export default async function(images) {
+export default async function PicturesToFont(images) {
   const bitmapImages  = await getInitBitmaps(images)
   const optimizedBmps = await getOptimizedBitmaps(bitmapImages)
   const vectorImgs    = await getVectorImages(optimizedBmps)
@@ -25,13 +25,13 @@ export async function getInitBitmaps(images) {
       if (img instanceof Buffer) {
         const fileName  = Potrace.getFileName('temp.img')
         await writeFile(path.join(tmpDir, fileName), img)
-        return await Potrace.makeBitmapFromOtherType(filename)
+        return await Potrace.makeBitmapFromOtherType(fileName)
       }
 
       if (/.*\.bmp$/.test(img))
         return img
 
-      return await Potrace.makeBitmapFromOtherType(img, path.join(tmpDir, path.basename(img)))
+      return await Potrace.makeBitmapFromOtherType(img, path.join(tmpDir, `${path.basename(img)}.bmp`))
     })
   )
 }
