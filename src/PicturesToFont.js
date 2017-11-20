@@ -23,8 +23,8 @@ export async function getInitBitmaps(images) {
   return await Promise.all(
     images.map(async img => {
       if (img instanceof Buffer) {
-        const fileName  = Potrace.getFileName('temp.img')
-        await writeFile(path.join(tmpDir, fileName), img)
+        const fileName = path.join(tmpDir, Potrace.getFileName('temp.img'))
+        await writeFile(fileName, img)
         return await Potrace.makeBitmapFromOtherType(fileName)
       }
 
