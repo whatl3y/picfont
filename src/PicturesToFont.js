@@ -7,14 +7,19 @@ import Potrace from './Potrace'
 const writeFile = util.promisify(fs.writeFile)
 
 export default async function PicturesToFont(images, fontOptions={}) {
-  const bitmapImages  = await getInitBitmaps(images)
-  const optimizedBmps = await getOptimizedBitmaps(bitmapImages)
-  const vectorImgs    = await getVectorImages(optimizedBmps)
-  const fontObject    = await FontGenerator.generate(vectorImgs, fontOptions)
+  const vectorImgs  = await createSvgImages(images)
+  const fontObject  = await FontGenerator.generate(vectorImgs, fontOptions)
 
   await Potrace.deleteTmpDir()
 
   return fontObject
+}
+
+export async function createSvgImages(images) {
+  const bitmapImages  = await getInitBitmaps(images)
+  const optimizedBmps = await getOptimizedBitmaps(bitmapImages)
+  const vectorImgs    = await getVectorImages(optimizedBmps)
+  return vectorImgs
 }
 
 export async function getInitBitmaps(images) {
