@@ -38,7 +38,7 @@ export default {
   async makeBitmapFromOtherType(sourceImage, outputImage=null) {
     outputImage = outputImage || this.getFileName(`${sourceImage}.bmp`)
     const jimpImage = await Jimp.read(sourceImage)
-    await jimpImage.write(outputImage)
+    await jimpImage.writeAsync(outputImage)
     return outputImage
   },
 
